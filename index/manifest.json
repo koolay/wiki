@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-06-28T08:13:35.367Z",
+  "generated_at": "2026-06-28T08:34:54.253Z",
   "entries": [
     {
       "path": "design-principles/separation-of-concerns.md",
@@ -21,11 +21,73 @@
         "reducing coupling"
       ],
       "related": []
+    },
+    {
+      "path": "scalability/client-side-load-balancing.md",
+      "title": "进程内客户端负载均衡：百万 RPS 内部 Fan-Out",
+      "date": "2026-06-28",
+      "summary": "高 fan-out 内部流量应把路由决策移入调用进程，复用与边缘代理一致的哈希环，并用 occupancy 信号与渐进式 rollout 换取延迟、成本与可观测性。",
+      "status": "published",
+      "tags": [
+        "scalability",
+        "load-balancing",
+        "kubernetes",
+        "sre"
+      ],
+      "keywords": [
+        "client-side load balancing",
+        "consistent hash",
+        "bounded load",
+        "occupancy",
+        "N-ring fade-in",
+        "Skipper"
+      ],
+      "applies_to": [
+        "单请求 fan-out 到数十/数百下游的高 QPS 内部调用",
+        "共享 ingress/代理成为延迟与故障归因盲区",
+        "依赖 pod 本地缓存的一致哈希路由迁移"
+      ],
+      "related": []
+    },
+    {
+      "path": "scalability/skipper-http-router.md",
+      "title": "Skipper：可编程 HTTP 路由与反向代理",
+      "date": "2026-06-28",
+      "summary": "Zalando 开源的 Go HTTP 路由器，用 eskip 声明路由、Filter 链与多数据源热更新，支撑超 30 万路由与 Kubernetes Ingress 生产规模。",
+      "status": "published",
+      "tags": [
+        "scalability",
+        "http-routing",
+        "reverse-proxy",
+        "kubernetes",
+        "go"
+      ],
+      "keywords": [
+        "Skipper",
+        "eskip",
+        "predicates",
+        "filters",
+        "dataclient",
+        "ingress-controller",
+        "routesrv"
+      ],
+      "applies_to": [
+        "需要声明式 HTTP 路由与请求/响应改写的边缘或入口层",
+        "Kubernetes Ingress 控制器选型与大规模路由规则管理",
+        "以 Go 库扩展自定义 Filter/Predicate 的代理层"
+      ],
+      "related": [
+        "scalability/client-side-load-balancing.md"
+      ]
     }
   ],
   "tree": {
     "design-principles": [
       "separation-of-concerns.md"
+    ],
+    "scalability": [
+      "client-side-load-balancing.md",
+      "skipper-http-router.md"
     ]
   }
 }
