@@ -1,7 +1,46 @@
 {
   "version": 1,
-  "generated_at": "2026-06-29T16:01:24.904Z",
+  "generated_at": "2026-06-29T16:50:45.085Z",
   "entries": [
+    {
+      "path": "ai-agents/loop-engineering.md",
+      "title": "Loop Engineering：让 AI Agent 自己运转的循环设计",
+      "date": "2026-06-30",
+      "summary": "把 coding agent 从「手动操作」升级为「自运转系统」：分离 planner/generator/evaluator 角色、先协商可验收契约、状态写盘可崩溃续接、目标驱动 + 独立 grader 闭环，按开/闭环与单 agent/编队选型，让人只保留目标、标准与合并键。",
+      "status": "published",
+      "tags": [
+        "ai-agents",
+        "agentic-workflow",
+        "automation",
+        "coding-agent"
+      ],
+      "keywords": [
+        "loop engineering",
+        "autonomous agent",
+        "generator evaluator pattern",
+        "independent grader",
+        "contract negotiation",
+        "goal",
+        "state file",
+        "taste rubric",
+        "trace reading",
+        "guardrails",
+        "cost per accepted change",
+        "open loop vs closed loop",
+        "single agent vs fleet",
+        "orchestrator subagents",
+        "worktrees",
+        "connectors",
+        "token cost"
+      ],
+      "applies_to": [
+        "把重复且可自动验证的开发任务（CI 三分类、依赖升级、lint 修复）交给 agent 自运转",
+        "为长跑（数小时/数天）agent 设计角色分离、可验收契约、跨轮记忆与停止条件",
+        "给无人值守的 agent 循环加权限/钩子护栏、控制成本并调试循环本身",
+        "在单 agent 与 orchestrator+specialist 编队、开环与闭环之间做选型与成本权衡"
+      ],
+      "related": []
+    },
     {
       "path": "design-principles/separation-of-concerns.md",
       "title": "Separation of Concerns",
@@ -113,6 +152,9 @@
     }
   ],
   "tree": {
+    "ai-agents": [
+      "loop-engineering.md"
+    ],
     "design-principles": [
       "separation-of-concerns.md"
     ],
