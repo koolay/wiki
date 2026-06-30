@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-06-29T16:50:45.085Z",
+  "generated_at": "2026-06-30T15:01:31.067Z",
   "entries": [
     {
       "path": "ai-agents/loop-engineering.md",
@@ -60,6 +60,46 @@
         "reducing coupling"
       ],
       "related": []
+    },
+    {
+      "path": "kubernetes/ksail-automated-testing.md",
+      "title": "KSail：用即弃集群做 Kubernetes 自动化测试",
+      "date": "2026-06-30",
+      "summary": "KSail 是一个声明式的本地/CI Kubernetes 集群编排器：单一静态二进制把 Kind/K3d/Talos/KWOK 等发行版、GitOps 投递与安全扫描收敛为同一套命令，让「建集群→部署→验证→销毁」成为可在流水线中复用的自动化测试闭环。",
+      "status": "published",
+      "tags": [
+        "kubernetes",
+        "testing",
+        "ci-cd",
+        "gitops",
+        "automation"
+      ],
+      "keywords": [
+        "ksail",
+        "ephemeral cluster",
+        "kind",
+        "k3d",
+        "kwok",
+        "talos",
+        "vcluster",
+        "integration test",
+        "smoke test",
+        "workload validate",
+        "kubescape",
+        "ttl",
+        "pr preview",
+        "github actions",
+        "kubeconform"
+      ],
+      "applies_to": [
+        "为 Kubernetes 工作负载/Operator/Helm Chart 建立 PR 级集成与冒烟测试",
+        "在 CI 中按需拉起即弃集群、跑测试再销毁，避免共享测试集群污染",
+        "把清单校验、安全扫描作为离线 PR 门禁，无需连接真实集群",
+        "用 GitOps（Flux/ArgoCD）端到端验证「提交→ reconcile →就绪」全链路"
+      ],
+      "related": [
+        "kubernetes/talhelper-talos-bare-metal.md"
+      ]
     },
     {
       "path": "kubernetes/talhelper-talos-bare-metal.md",
@@ -159,6 +199,7 @@
       "separation-of-concerns.md"
     ],
     "kubernetes": [
+      "ksail-automated-testing.md",
       "talhelper-talos-bare-metal.md"
     ],
     "scalability": [
