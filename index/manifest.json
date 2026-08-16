@@ -1,7 +1,40 @@
 {
   "version": 1,
-  "generated_at": "2026-06-30T15:01:31.067Z",
+  "generated_at": "2026-08-16T15:35:13.083Z",
   "entries": [
+    {
+      "path": "ai-agents/celln-tool-leasing-isolation.md",
+      "title": "Celln：它和 Container、VM 有什么区别？",
+      "date": "2026-08-11",
+      "summary": "用 Container、VM 和 Celln 的对比理解 Celln：它用 microVM 提供较强隔离，但不把完整机器或镜像交给 Agent，而是按任务临时借入经过验证的只读工具，并在任务结束后销毁。",
+      "status": "published",
+      "tags": [
+        "ai-agents",
+        "sandboxing",
+        "security",
+        "microvm"
+      ],
+      "keywords": [
+        "Celln",
+        "tool leasing",
+        "agent lane",
+        "tool lane",
+        "mote",
+        "cell",
+        "authority ratchet",
+        "attestation",
+        "revocation",
+        "Landlock",
+        "seccomp",
+        "microVM"
+      ],
+      "applies_to": [
+        "需要运行 Agent 生成代码、但不希望把宿主机或完整容器环境交给 Agent 的执行平面",
+        "设计可验证、可撤销、最小权限的工具供应链与 Agent 沙箱",
+        "评估 microVM、内容哈希、解释器降权和受控网络出口的组合方案"
+      ],
+      "related": []
+    },
     {
       "path": "ai-agents/loop-engineering.md",
       "title": "Loop Engineering：让 AI Agent 自己运转的循环设计",
@@ -38,6 +71,128 @@
         "为长跑（数小时/数天）agent 设计角色分离、可验收契约、跨轮记忆与停止条件",
         "给无人值守的 agent 循环加权限/钩子护栏、控制成本并调试循环本身",
         "在单 agent 与 orchestrator+specialist 编队、开环与闭环之间做选型与成本权衡"
+      ],
+      "related": []
+    },
+    {
+      "path": "ai-agents/nono-kernel-agent-sandbox.md",
+      "title": "nono：面向 AI Agent 的内核能力沙箱",
+      "date": "2026-08-11",
+      "summary": "nono 是一个不依赖容器或 VM 的 AI Agent 沙箱：用 Linux Landlock、macOS Seatbelt 以及可选的监督式 seccomp-notify，把文件、网络、凭据和工具调用收敛为内核强制的最小能力。",
+      "status": "published",
+      "tags": [
+        "ai-agents",
+        "sandboxing",
+        "security",
+        "least-privilege"
+      ],
+      "keywords": [
+        "nono",
+        "Landlock",
+        "Seatbelt",
+        "seccomp-notify",
+        "tool sandbox",
+        "capability-based security",
+        "credential proxy",
+        "WSL2"
+      ],
+      "applies_to": [
+        "需要在本机运行不可信 AI Agent 或其生成代码的开发工作流",
+        "希望把文件、网络、凭据和工具调用按能力拆分，而不是只套一层容器的执行平面",
+        "评估跨 macOS、Linux、WSL2 的轻量 Agent 沙箱方案"
+      ],
+      "related": []
+    },
+    {
+      "path": "ai-agents/scion-multi-agent-orchestration.md",
+      "title": "Scion：面向深度 Agent 的容器化多智能体编排",
+      "date": "2026-08-11",
+      "summary": "Scion 是 GoogleCloudPlatform 开源的实验性多智能体编排平台：以 Hub 统一管理状态、身份和调度，以 Runtime Broker 承载隔离容器，并通过四种运行模式、托管 Agent、技能注册表和 OpenTelemetry 观测能力覆盖从个人本地运行到共享托管部署。",
+      "status": "published",
+      "tags": [
+        "ai-agents",
+        "multi-agent",
+        "orchestration",
+        "containers",
+        "observability"
+      ],
+      "keywords": [
+        "Scion",
+        "deep agent",
+        "multi-agent orchestration",
+        "Hub",
+        "Runtime Broker",
+        "managed agent",
+        "skill registry",
+        "single-node hosted",
+        "SQLite",
+        "OpenTelemetry"
+      ],
+      "applies_to": [
+        "需要并行运行研究、编码、审计或测试 Agent 的团队",
+        "需要在本地、单节点云主机和高可用托管之间渐进部署 Agent 平台的架构设计",
+        "需要统一管理 Agent 身份、项目、技能、日志和运行时隔离的内部平台"
+      ],
+      "related": []
+    },
+    {
+      "path": "ai-agents/smolvm-portable-microvm.md",
+      "title": "smolvm：用可移植 microVM 隔离运行 OCI 工作负载",
+      "date": "2026-08-16",
+      "summary": "smolvm 用 libkrun 在 macOS、Linux 和 Windows 上启动独立 guest kernel 的轻量 VM，兼容 OCI 镜像并可打包为 .smolmachine；适合需要比容器更强隔离的本地、CI 或 Agent 执行环境。",
+      "status": "published",
+      "tags": [
+        "ai-agents",
+        "microvm",
+        "sandboxing",
+        "rust",
+        "containers"
+      ],
+      "keywords": [
+        "smolvm",
+        "libkrun",
+        "OCI image",
+        ".smolmachine",
+        "guest kernel",
+        "egress filtering"
+      ],
+      "applies_to": [
+        "运行 Agent 生成的不可信代码",
+        "需要跨平台本地 microVM 的 CI 工作负载",
+        "把 OCI 应用打包成自包含运行产物"
+      ],
+      "related": [
+        "ai-agents/celln-tool-leasing-isolation.md",
+        "ai-agents/nono-kernel-agent-sandbox.md"
+      ]
+    },
+    {
+      "path": "container-deployment/unregistry-direct-image-transfer.md",
+      "title": "Unregistry：通过 SSH 直传容器镜像",
+      "date": "2026-08-15",
+      "summary": "Unregistry 把临时 OCI Registry、SSH 端口转发与 containerd 镜像存储组合起来，只传远端缺失的镜像层，适合少量 Docker 主机、CI/CD 与隔离网络中的直接发布。",
+      "status": "published",
+      "tags": [
+        "docker",
+        "containerd",
+        "container-registry",
+        "ssh",
+        "deployment"
+      ],
+      "keywords": [
+        "unregistry",
+        "docker pussh",
+        "direct image transfer",
+        "OCI registry",
+        "containerd image store",
+        "SSH tunnel",
+        "incremental layer transfer"
+      ],
+      "applies_to": [
+        "把本地或 CI 构建的 Docker 镜像直接部署到少量远程主机",
+        "不希望维护中心化私有 Registry 的轻量部署",
+        "公网 Registry 不可达、但可通过 SSH 访问目标机的隔离网络",
+        "需要避免 docker save/load 重复传输已有镜像层"
       ],
       "related": []
     },
@@ -189,11 +344,104 @@
       "related": [
         "scalability/client-side-load-balancing.md"
       ]
+    },
+    {
+      "path": "web-automation/browserless-automated-testing.md",
+      "title": "Browserless：把浏览器当服务跑自动化测试",
+      "date": "2026-07-01",
+      "summary": "Browserless 是用 Docker 部署的无头浏览器服务（BaaS），让 Puppeteer/Playwright/Selenium 脚本只改连接串即可连到托管浏览器，免去字体、崩溃、依赖与扩容之苦。本文讲清它的 connect 连接模型、launch 参数、等待与稳定性范式、并发与超时治理、自托管 Docker 部署及 CI 集成与能力边界。",
+      "status": "published",
+      "tags": [
+        "testing",
+        "web-automation",
+        "headless-browser",
+        "playwright",
+        "puppeteer",
+        "docker",
+        "ci-cd"
+      ],
+      "keywords": [
+        "browserless",
+        "browsers as a service",
+        "baas",
+        "headless chrome",
+        "puppeteer-core",
+        "playwright-core",
+        "connectOverCDP",
+        "browserWSEndpoint",
+        "browserless docker",
+        "ghcr.io/browserless/chromium",
+        "concurrency",
+        "timeout",
+        "waitForSelector",
+        "waitUntil",
+        "end-to-end test",
+        "e2e",
+        "selenium",
+        "chromedp"
+      ],
+      "applies_to": [
+        "已有 Puppeteer/Playwright/Selenium 脚本，想在云端或集中式服务上跑 E2E/冒烟测试而不自管浏览器基础设施",
+        "在 CI 中需要稳定、可扩容地并行拉起大量浏览器会话做回归测试",
+        "为依赖 JS 渲染、登录态、代理或地域定向的页面编写端到端测试",
+        "希望自托管（Docker）一个浏览器池供团队/流水线共享，并治理并发、超时与资源",
+        "判断 Browserless 与本地 Headless Chrome、Lightpanda 等运行时在测试场景下的取舍"
+      ],
+      "related": [
+        "web-automation/lightpanda-automated-testing.md"
+      ]
+    },
+    {
+      "path": "web-automation/lightpanda-automated-testing.md",
+      "title": "Lightpanda：为机器而生的无头浏览器与自动化测试落地",
+      "date": "2026-07-01",
+      "summary": "Lightpanda 是用 Zig 从零写成的 AI 原生无头浏览器，无图形渲染、内存约为 Chrome 的 1/16、启动接近瞬时，通过 CDP 兼容 Puppeteer/Playwright/chromedp。本文讲清它作为自动化测试运行时的连接方式、等待与交互模式、本地与云端切换、CI 集成及其能力边界。",
+      "status": "published",
+      "tags": [
+        "testing",
+        "web-automation",
+        "headless-browser",
+        "playwright",
+        "puppeteer",
+        "ci-cd"
+      ],
+      "keywords": [
+        "lightpanda",
+        "headless browser",
+        "cdp",
+        "chrome devtools protocol",
+        "puppeteer-core",
+        "playwright-core",
+        "connectOverCDP",
+        "browserWSEndpoint",
+        "serve",
+        "end-to-end test",
+        "e2e",
+        "waitForSelector",
+        "waitForFunction",
+        "obey-robots",
+        "lightpanda cloud",
+        "chromedp"
+      ],
+      "applies_to": [
+        "为依赖 XHR/JS 渲染的页面编写端到端（E2E）或冒烟测试，且追求低内存、高并发与快速启动",
+        "把现有 Puppeteer/Playwright 脚本通过 CDP 指向 Lightpanda 以降低 CI 资源占用",
+        "在 CI 流水线中并行运行大量浏览器会话进行回归测试或数据校验",
+        "判断 Lightpanda 与 Headless Chrome 在测试场景下的取舍边界"
+      ],
+      "related": []
     }
   ],
   "tree": {
     "ai-agents": [
-      "loop-engineering.md"
+      "celln-tool-leasing-isolation.md",
+      "loop-engineering.md",
+      "nono-kernel-agent-sandbox.md",
+      "scion-multi-agent-orchestration.md",
+      "smolvm-portable-microvm.md"
+    ],
+    "container-deployment": [
+      "unregistry-direct-image-transfer.md"
     ],
     "design-principles": [
       "separation-of-concerns.md"
@@ -205,6 +453,10 @@
     "scalability": [
       "client-side-load-balancing.md",
       "skipper-http-router.md"
+    ],
+    "web-automation": [
+      "browserless-automated-testing.md",
+      "lightpanda-automated-testing.md"
     ]
   }
 }
