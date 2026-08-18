@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-08-16T15:35:13.083Z",
+  "generated_at": "2026-08-18T17:01:09.492Z",
   "entries": [
     {
       "path": "ai-agents/celln-tool-leasing-isolation.md",
@@ -213,6 +213,40 @@
       "applies_to": [
         "structuring large codebases",
         "reducing coupling"
+      ],
+      "related": []
+    },
+    {
+      "path": "kubernetes/inspektor-gadget-network-diagnostics.md",
+      "title": "Inspektor Gadget：Kubernetes 网络超时、DNS 与 TCP RTT 的分层诊断",
+      "date": "2026-08-19",
+      "summary": "用 Inspektor Gadget 的 trace_dns、trace_tcp、tcpdump 与 profile_tcprtt，把 Kubernetes 网络故障拆成 DNS 链路、TCP 生命周期、报文序列和按节点 RTT 分布，并结合 trace_tcp 的 eBPF hook 理解观测边界。",
+      "status": "published",
+      "tags": [
+        "kubernetes",
+        "networking",
+        "ebpf",
+        "observability",
+        "troubleshooting"
+      ],
+      "keywords": [
+        "Inspektor Gadget",
+        "trace_dns",
+        "trace_tcp",
+        "tcpdump",
+        "profile_tcprtt",
+        "TCP RTT",
+        "DNS troubleshooting",
+        "network timeout",
+        "eBPF",
+        "CoreDNS",
+        "Kubernetes network"
+      ],
+      "applies_to": [
+        "Kubernetes Pod 间歇性网络超时、连接失败或跨节点通信异常",
+        "需要定位 Pod → kube-dns → CoreDNS → upstream 的 DNS 请求缺口",
+        "需要按 worker node 监控 TCP RTT，并区分网络延迟与应用延迟",
+        "需要理解基于 eBPF hook 的 TCP connect、accept、close 事件采集"
       ],
       "related": []
     },
@@ -447,6 +481,7 @@
       "separation-of-concerns.md"
     ],
     "kubernetes": [
+      "inspektor-gadget-network-diagnostics.md",
       "ksail-automated-testing.md",
       "talhelper-talos-bare-metal.md"
     ],
