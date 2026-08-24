@@ -1,7 +1,38 @@
 {
   "version": 1,
-  "generated_at": "2026-08-18T17:01:09.492Z",
+  "generated_at": "2026-08-24T19:14:10.878Z",
   "entries": [
+    {
+      "path": "ai-agents/cactus-edge-ai-runtime.md",
+      "title": "Cactus：移动与可穿戴设备的混合边缘 AI 推理栈",
+      "date": "2026-08-25",
+      "summary": "Cactus 将量化、设备优化 kernels、零拷贝计算图和多模态推理引擎组合为端侧运行时，并可按置信度将难题转交云端；采用时需独立验证模型、量化和设备组合。",
+      "status": "published",
+      "tags": [
+        "edge-ai",
+        "local-inference",
+        "model-quantization",
+        "ai-agents",
+        "mobile"
+      ],
+      "keywords": [
+        "Cactus",
+        "on-device AI",
+        "hybrid edge-cloud",
+        "OpenAI-compatible API",
+        "quantization",
+        "Cactus Engine"
+      ],
+      "applies_to": [
+        "在 Apple 或 Android 设备上运行本地语言、语音或视觉模型",
+        "需要通过量化控制模型质量、内存与延迟权衡的边缘推理系统",
+        "将本地推理失败或低置信度请求受控地升级到云端的应用"
+      ],
+      "related": [
+        "ai-agents/needle-local-tool-calling.md",
+        "ai-agents/nono-kernel-agent-sandbox.md"
+      ]
+    },
     {
       "path": "ai-agents/celln-tool-leasing-isolation.md",
       "title": "Celln：它和 Container、VM 有什么区别？",
@@ -73,6 +104,38 @@
         "在单 agent 与 orchestrator+specialist 编队、开环与闭环之间做选型与成本权衡"
       ],
       "related": []
+    },
+    {
+      "path": "ai-agents/needle-local-tool-calling.md",
+      "title": "Needle：面向受限设备的本地工具调用模型",
+      "date": "2026-08-25",
+      "summary": "Needle 用小型本地模型、受 JSON Schema 约束的调用输出和有限工具检索，为边缘设备提供工具调用与结构化提取；宿主程序仍须承担授权、语义校验和审计。",
+      "status": "published",
+      "tags": [
+        "ai-agents",
+        "tool-calling",
+        "edge-ai",
+        "structured-extraction",
+        "local-inference"
+      ],
+      "keywords": [
+        "Needle",
+        "local tool calling",
+        "function calling",
+        "structured extraction",
+        "JSON Schema",
+        "edge inference"
+      ],
+      "applies_to": [
+        "内存、网络或功耗受限设备上的本地自动化",
+        "需要小模型输出受约束工具参数的 Agent 集成",
+        "从短文本中进行本地结构化字段提取"
+      ],
+      "related": [
+        "ai-agents/loop-engineering.md",
+        "ai-agents/nono-kernel-agent-sandbox.md",
+        "ai-agents/cactus-edge-ai-runtime.md"
+      ]
     },
     {
       "path": "ai-agents/nono-kernel-agent-sandbox.md",
@@ -468,8 +531,10 @@
   ],
   "tree": {
     "ai-agents": [
+      "cactus-edge-ai-runtime.md",
       "celln-tool-leasing-isolation.md",
       "loop-engineering.md",
+      "needle-local-tool-calling.md",
       "nono-kernel-agent-sandbox.md",
       "scion-multi-agent-orchestration.md",
       "smolvm-portable-microvm.md"
